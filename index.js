@@ -107,3 +107,12 @@ bot.catch((err) => {
 });
 
 bot.start();
+
+module.exports.handler = async (event) => {
+    const body = JSON.parse(event.body);
+    await bot.handleUpdate(body);
+    return {
+        statusCode: 200,
+        body: 'OK',
+    };
+};
